@@ -1,9 +1,11 @@
 package edu.tvv.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static edu.tvv.util.Constants.EMPTY;
 import static edu.tvv.util.Constants.EXCEPT_ALLOWED_ALPHABETICAL_CHARS;
@@ -28,8 +30,20 @@ public class Service {
 
     private Set<Character> getCharactersToRemove(String charsToRemove) {
         String charsToRemoveCleared = charsToRemove.replaceAll(EXCEPT_ALLOWED_ALPHABETICAL_CHARS, EMPTY);
-        return charsToRemoveCleared.chars()
+
+        Set<Character> mirrorStream = new HashSet<>();
+        for (Character c:
+             charsToRemoveCleared.toCharArray()) {
+            if (c >= 97 && c <= 122) {
+                mirrorStream.add((char) (c - 32));
+            } else if (c >= 65 && c <= 90) {
+                mirrorStream.add((char) (c + 32));
+            }
+        }
+        Set<Character> directStream = charsToRemoveCleared.chars()
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.toSet());
+
+        return Stream.concat(directStream.stream(), mirrorStream.stream()).collect(Collectors.toSet());
     }
 }
