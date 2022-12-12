@@ -15,7 +15,7 @@ For a current string "my lucky numbers are 6, 8, and 19.", calling remove("") wo
 Remember: This method builds and returns a new string, and does not directly modify the myString field.
 
 * @param arg the string containing the alphabetical characters to be removed from the current string
-* @return new string in which the alphabetical characters specified in the ace are removed
+* @return new string in which the alphabetical characters specified in the args are removed
 * */
 public class App {
     public static void main(String[] args) {
