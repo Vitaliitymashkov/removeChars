@@ -20,10 +20,10 @@ Remember: This method builds and returns a new string, and does not directly mod
 public class App {
     public static void main(String[] args) {
 //        String inputString = "my lucky numbers are 6, 8, and 19.";
-        String inputString = "my lucky numbeRs are 6, 8, and 19.";
+        String inputString = "my lucky nUmbeRs are 6, 8, and 19.";
 //        String inputString = null;
 //        String charsToRemove = "ra6";
-        String charsToRemove = "RAyrRyY 62";
+        String charsToRemove = "RAyrRyY 62u";
 //        String charsToRemove = "";
 
         System.out.printf("Return: [%s]%n", new Service(inputString).removeChars(charsToRemove));
